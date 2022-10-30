@@ -1,0 +1,161 @@
+<!--Durante o lançamento de um filme, 45 pessoas assistiram. Na saída
+foi realizada uma pesquisa informando a idade, sexo e a opinião,
+onde:
+ ótimo=4, bom=3, regular=2, péssimo=1.
+Fazer uma aplicação utilizando JavaScript que receba os dados
+(idade, sexo e opinião)
+ e retornar:
+ a média da idade das pessoas
+ que responderam ao questionário;
+
+ a idade da pessoa mais velha;
+
+ a idade da pessoa mais nova;
+
+ a quantidade de pessoas que responderam péssimo;
+
+ a porcentagem de pessoas que responderam ótimo e bom;
+
+ o número de mulheres e homens que responderam ao
+questionário
+-->
+<!DOCTYPE html>
+<html>
+<head lang="pt-br">
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Pesquisa sobre filme</title>
+	
+</head>
+
+
+<body>
+	<header>
+		<h1>Formulário de Pesquisa</h1>
+	</header>
+
+		<fieldset>
+		
+				<span>Entre com sua idade: </span><br>
+				<input type="text" name="idade" id="idade"  >
+				<hr>
+
+				<span>Qual sua sexualidaed: </span><br>
+				<input type="radio" name="sexo" id="masc" value="masculino">Masculino
+				<input type="radio" name="sexo" id="fem" value="feminino">Feminino	
+				<hr>
+
+				<span>Qual sua opinião sobre o filme?</span><br>
+				<input type="radio" name="opiniao" id="otimo" value="otimo">Ótimo
+				<input type="radio" name="opiniao" id="bom" value="bom">Bom	
+				<input type="radio" name="opiniao" id="regular" value="regular">Regular
+				<input type="radio" name="opiniao" id="pessimo" value="pessimo">Pessimo
+				<br>
+				<hr>
+				<button type="button" onclick ="validar()">Validar</button>	
+				<hr>
+		</fieldset>
+
+	
+		<script>
+
+			var idade = new Array(45)
+			var opcao_sexo = ""
+			var opcao_opiniao= ""
+			var x = 0
+			var soma_idade = 0
+			var maior_idade = 0
+			var menor_idade = 200
+			var media_idade = 0.0
+			var opcao_otimo = 0
+			var opcao_bom = 0
+			var opcao_regular = 0
+			var opcao_pessimo = 0
+			var numero_de_opiniao = 0
+			var porc_bom_otimo = 0.0
+			var opcao_masc = 0
+			var opcao_fem = 0
+
+		function validar() {
+				
+				var elem_sexo = document.getElementsByName('sexo');
+				
+				for(i = 0; i < elem_sexo.length; i++){
+					if(elem_sexo[i].checked){
+						opcao_sexo = elem_sexo[i].value
+						switch(opcao_sexo){
+							case "masculino":
+							 	opcao_masc++
+							 	break
+							case "feminino":
+							 	opcao_fem++
+							 	break
+						}
+					}
+					
+				}
+
+				var elem_opiniao = document.getElementsByName('opiniao');
+				
+				for(i = 0; i < elem_opiniao.length; i++){
+					if(elem_opiniao[i].checked){
+						opcao_opiniao = elem_opiniao[i].value
+						numero_de_opiniao++
+						console.log(opcao_opiniao)
+
+						switch(opcao_opiniao){
+							case 'otimo':
+									opcao_otimo++
+								break;
+							case 'bom':
+									opcao_bom++
+								break;
+							case 'regular':
+									opcao_regular++
+								break;
+							case 'pessimo':
+									opcao_pessimo++
+								break;
+						}
+					}
+				}
+
+				porc_bom_otimo = parseFloat((opcao_bom + opcao_otimo)*100) / numero_de_opiniao
+
+			if(x <= 45){
+
+				idade[x] = parseInt(document.getElementById('idade').value)
+				document.getElementById('idade').value = ''
+				console.log(idade)
+				soma_idade = parseFloat(soma_idade + idade[x])
+					
+				if(idade[x] > idade[x-1]){
+					maior_idade = idade[x]
+				}
+				if(idade[x] < idade[x-1]){
+					menor_idade = idade[x]
+				}
+
+				if(x == 45){
+					
+					media_idade = parseFloat((soma_idade)/ x)
+				alert("Resultados da Pesquisa:"
+					+ "\n media das idade: " + media_idade 
+					+ "\n maior idade: " + maior_idade
+					+ "\n menor das idade: " + menor_idade
+					+ "\n Qtd. pessimo: " + opcao_pessimo
+					+ "\n numero pesssoas responderam: " + numero_de_opiniao
+					+ "\n porcentagem bom e otimo: " + porc_bom_otimo + "%"
+					+ "\n numero sexo masculumo: " + opcao_masc
+					+ "\n numero sexo feminino: " + opcao_fem)
+				return document.getElementById('idade').value = 'Pesquisa concluida vide calculos'
+				}else{
+					return x++
+				}
+			}
+
+		}
+		
+		</script>
+	</body>
+</html>
