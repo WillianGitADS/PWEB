@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Entrada de dados objeto</title>
+
+</head>
+<body>
+
+	<h1> Dados de entrada e saida</h1>
+		<form> 
+		
+			<span>Nome:</span><br>
+			<input type="text" name="nome" id="nome">
+			
+			<br>
+			
+			<span>RA:</span><br>
+			<input type="text" name="ra" id="ra">
+			
+			<br>
+			<hr>
+			
+			<button type="button" onclick ="adicionarMod()">AddMod</button>
+
+			<button type="button" onclick ="concluir()">Concluir</button>		
+			<hr>
+		
+		</form>
+		<p id="apresentar">
+
+	<script>
+
+	var x = 0;
+	var ArrayNome = new Array();
+	var ArrayRa = new Array();
+	
+	var objtAluno = {
+			nome:"",
+			ra: ""
+		};
+
+		/*outro metodo para criação de um objeto
+		
+		var objtAluno = {};
+		
+		objtAluno.nome = "";
+		objtAluno.ra = "";
+		
+		*/
+
+	/*	
+		var objtAluno = new Object();
+		objtAluno.nome = "";
+		objtAluno.ra = "";
+	*/
+
+	function adicionarMod(){
+		
+			objtAluno.nome = document.getElementById('nome').value;
+			objtAluno.ra = document.getElementById('ra').value;
+
+		
+		ArrayNome[x] = objtAluno.nome;
+		ArrayRa[x] = objtAluno.ra;
+
+			alert("*******\nO aluno : \nNome: " + ArrayNome[x] + "\nRA: "  + ArrayRa[x] + "\nfoi adicionado com sucesso\n********" + "\nPara adicionar mais alunos digite nome e ra !!!\nPara concluir clique em concluir!!!");
+		
+		document.getElementById('nome').value = '';
+		document.getElementById('ra').value = '';	
+		document.getElementById('nome').focus();
+
+		return x++;
+		}
+		
+		
+		
+	function concluir() {
+
+		//outro modelo de apresentação
+		//document.getElementById("apresentar").innerHTML +="<h2>Apresentação dos dados</h2><hr>";
+		document.write("<table>");
+		document.write("<tr><th>NOME</th><th>RA</th></tr>");
+
+		for(i = 0; i < ArrayNome.length; i++){
+
+			//outro modelo de apresentação
+			//document.getElementById("table").innerHTML +="<p><strong>NOME: </strong>" + ArrayNome[i] + "<strong>RA: </strong>" + ArrayRa[i] + "</p>";
+
+			
+			document.write("<tr><td>  " + ArrayNome[i] + "</td><td>   " + ArrayRa[i] + "</td></tr>");
+			}
+			document.write("</table>");
+
+	}
+		
+		
+	</script>
+
+</body>
+
+
+</html>

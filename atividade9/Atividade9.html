@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Maior numero</title>
+
+	<style type="text/css">
+		h1{
+			color: blue;
+		}
+
+
+		h2{
+			color:  darkblue;
+		}
+
+		h3{
+			color:  green;
+		}
+	</style>
+</head>
+<body>
+
+	<h1> Dados de entrada e saida</h1>
+
+	<p id="apresentar">
+	
+	<script>
+
+		var numeros = new Array();  //OU 
+        
+        alert("Entre com 3 numero!");
+
+        numeros[0] = prompt("Qual é o seu primeiro numero?");
+        numeros[1] = prompt("Qual é o seu segundo numero?");
+        numeros[2] = prompt("Qual é o seu terceiro numero?");
+
+
+        numeros[0] = parseFloat(numeros[0]);
+        numeros[1] = parseFloat(numeros[1]);
+        numeros[2] = parseFloat(numeros[2]);
+       
+       	var teste=[];
+       		
+
+		function maior(){
+			var NumMaior = 0;
+
+			for(x = 0; x < numeros.length; x++){
+				
+				if(NumMaior < numeros[x]){
+					NumMaior = numeros[x];
+				} 
+			}
+			return NumMaior;
+		}
+
+		var maiorValor = maior(numeros);
+		alert("O maior numero é: " + maiorValor);
+
+		document.getElementById("apresentar").innerHTML += "<h3> O PRIMEIRO NUMERO É : " + numeros[0] + "</h3><BR>" ;
+		document.getElementById("apresentar").innerHTML += "<h3> O SEGUNDO  NUMERO É : " + numeros[1] + "</h3><BR>" ;
+		document.getElementById("apresentar").innerHTML += "<h3> O TERCEIRO NUMERO É : " + numeros[2] + "</h3><BR>" ;
+		document.getElementById("apresentar").innerHTML += "<h2> O MAIOR VALOR É : " + maiorValor + "</h2><BR>" ;
+
+		numeros.sort(function(a, b){return a-b});
+
+		document.getElementById("apresentar").innerHTML += "<h3> Numeros ordenados : " + numeros[0] + ", " + numeros[1] + ", " + numeros[2] +".</h3><BR>" ;
+
+	</script>
+
+</body>
+
+
+</html>
