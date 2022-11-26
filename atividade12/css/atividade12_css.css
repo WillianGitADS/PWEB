@@ -1,0 +1,51 @@
+body{
+	background-image: url('../imagens/parede.png');
+	width: 1000px;
+	margin: 20px auto;
+}
+
+.posicao{
+	text-align: left;
+}
+h1{
+	font-size: 50px;
+}
+
+ul li{
+	margin: 10px auto;
+	list-style: sidama;
+	font-size: 30px;
+
+}
+
+.padrao-imagem {
+	width: 800px;
+	height: 600px;
+	position: relative;
+	margin: 50px auto;
+	left: 0px;
+	overflow: hidden;
+}
+
+.padrao-imagem .janela {
+	position: absolute;
+	width: 100%;
+	height: 100%;
+	top: 0;
+	left: 0;
+	transition: opacity 1000ms;
+}
+
+.padrao-imagem .janela.fechada {
+	z-index: 2;
+}
+
+.padrao-imagem .janela.aberta {
+	z-index: 1;
+	opacity: 0;
+}
+
+.padrao-imagem .janela.quebrada {
+	z-index: 0;
+	opacity: 0; 
+}
