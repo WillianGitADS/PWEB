@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Muda maiusculo minusculo</title>
+
+	<style>
+		.position{
+			margin: 100px auto;
+			text-align: center;
+		}
+		.texto_formatado{
+			font-size: 25px;
+			color: blue;
+		}
+
+	</style>
+
+</head>
+	<body>
+		<section class="position">
+			<div>
+				<h1>Digite um texto, selecione para mudar as letras entre maiuscula e minuscula</h1>
+				<hr>
+				<input class = "texto_formatado" type="text" title="text" name="entrada" id="texto_digitado">
+			</div>
+			<div>
+				<input type="radio" name="formatar" value="maiusculo" id="maiusculo">maiusculo
+				<input type="radio" name="formatar" value="minusculo" id="minusculo">minusculo
+				<br>
+				<button type="button" onclick="aplicar()">Formatar</button>
+			</div>
+		</section>
+
+		<script type="text/javascript">
+
+			function aplicar(){
+
+				var formato = ""
+				var temp = ""
+
+				var select_formato = document.getElementsByName('formatar');
+				
+				for (var i = 0; i < select_formato.length; i++){
+					if(select_formato[i].checked){
+						formato = select_formato[i].value
+					}
+				}
+
+				switch(formato){
+					case 'maiusculo':
+						
+						temp = document.querySelector('#texto_digitado').value.toUpperCase();
+						break;
+
+					case 'minusculo':
+						temp = document.querySelector('#texto_digitado').value.toLowerCase();
+						break;
+					}
+						document.querySelector("[id = 'texto_digitado']").value = temp;
+	}
+		</script>
+
+	</body>
+</html>
