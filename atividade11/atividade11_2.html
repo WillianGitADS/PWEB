@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>Banco movimentações</title>
+
+	
+</head>
+<body>
+	<section>
+		<form>
+			<h2>Conta</h2>
+
+
+		</form>
+	</section>
+
+	<script type="text/javascript">
+		
+	//conta();
+	//corrente();
+	//poupanca();
+
+
+	function Conta(){
+		
+		var nome_correntista; 
+		var banco;
+		var numero_conta;
+		var saldo;
+
+		
+		this.get_nome_correntista =function(){
+			return this.nome_correntista;//document.write(nome_correntista);
+		};
+
+		this.set_nome_correntista = function (value){
+			this.nome_correntista = value;
+		};
+
+		this.get_banco = function(){
+			return this.banco;//document.write(banco);
+		};
+
+		this.set_banco = function (value){
+			this.banco = value;
+		};
+
+		this.get_numero_conta = function(){
+			return this.numero_conta;//document.write(numero_conta);
+		};
+
+		this.set_numero_conta = function (value){
+			this.numero_conta = value;
+		};
+
+		this.get_saldo = function(){
+			return this.saldo;//document.write(saldo);
+		};
+
+		this.set_saldo_deposito = function (value){
+			this.saldo = value;
+		};
+
+		this.set_saldo_saque = function (value){
+
+			if(saldo > value){
+				this.saldo -= value;
+			}else{
+				corrente(this.value);
+			}
+		};
+		
+
+	}
+	
+	function Corrente(){
+
+		var saldo_especial;
+		var juros_especial;
+		var data_vencimento_especial;
+	
+
+		this.get_saldo_especial = function(){
+			return this.saldo_especial;//
+		};
+
+		this.set_saldo_especial = function(value){
+			this.saldo_especial = value;
+		};
+
+		this.get_juros_especial = function(){
+			return this.juros_especial;
+		};
+
+		this.set_juros_especial = function(value){
+			this.juros_especial = value;
+		};
+
+		this.get_data_vencimento_especial = function(){
+			return this.data_vencimento_especial;
+		};
+
+		this.set_data_vencimento_especial = function(value){
+			this.data_vencimento_especial = value;
+		};
+		
+	}
+
+	function Poupanca(juros_poupanca, data_vencimento_poupanca){
+		var juros_poupanca;
+		var data_vencimento_poupanca;
+
+		this.get_juros_poupanca = function(){
+			return this.juros_poupanca;
+		};
+
+		this.set_juros_poupanca = function(value){
+			this.juros_poupanca = value;
+		};
+
+		this.get_data_vencimento_poupanca =function(){
+			return this.data_vencimento_poupanca;
+		};
+
+		this.set_data_vencimento_poupanca = function(value){
+			this.data_vencimento_poupanca = value;
+		};
+	
+	}
+
+		Corrente.prototype = new Conta();
+		Poupanca.prototype = new Conta();
+
+		user_conta_corrente = new Corrente();
+		user_conta_poupanca = new Poupanca();
+
+		
+//usuario da conta corrente
+		alert("Entrada de dados da Conta Corrente!!!")
+	
+		user_conta_corrente.set_nome_correntista(prompt("Entre com o nome do correntista."));
+		user_conta_corrente.set_banco(prompt("Entre com o nome do Banco."));
+		user_conta_corrente.set_numero_conta(prompt("Entre com o numero da conta."));
+		user_conta_corrente.set_saldo_deposito(prompt("Entre com o valor do deposito inicial."));		
+		user_conta_corrente.set_saldo_especial(prompt("Entre com o limite do especial."));
+		user_conta_corrente.set_juros_especial(prompt("Entre com a taxa de juros"));
+		user_conta_corrente.set_data_vencimento_especial(prompt("Entre com a data de vencimento."));
+	
+//imprimindo dados do correntista
+
+		document.write("<h2>Dados do correntista: <br>" + user_conta_corrente.get_nome_correntista() + "</h2><hr><br>")
+		document.write("Nome do correntista: " + user_conta_corrente.get_nome_correntista() + ".<br>");
+		document.write("Nome do Banco: " + user_conta_corrente.get_banco() + ".<br>");
+		document.write("Numero da Conta: " + user_conta_corrente.get_numero_conta() + ".<br>");
+		document.write("Saldo conta Corrente: " + user_conta_corrente.get_saldo() + ".<br>");
+		document.write("Saldo especial: " + user_conta_corrente.get_saldo_especial() + ".<br>");
+		document.write("Taxa de juros Especial: " + user_conta_corrente.get_juros_especial() + ".<br>")
+		document.write("Data de vencimento especial: " + user_conta_corrente.get_data_vencimento_especial() + ".<br>");
+
+//usuario conta poupança
+		
+		alert("Entrada de dados da Conta Poupança!!!")
+		user_conta_poupanca.set_nome_correntista(prompt("Entre com o nome do poupança."));
+		user_conta_poupanca.set_banco(prompt("Entre com o nome do Banco."));
+		user_conta_poupanca.set_numero_conta(prompt("Entre com o numero da conta."));
+		user_conta_poupanca.set_saldo_deposito(prompt("Entre com o valor do deposito inicial."));		
+		user_conta_poupanca.set_juros_poupanca(prompt("Entre com o juros da conta poupança."));
+		user_conta_poupanca.set_data_vencimento_poupanca(prompt("Entre com a data de vencimento"));
+
+//imprimindo informações usuario conta poupança
+		document.write("<h2>Dados do correntista: <br>" + user_conta_poupanca.get_nome_correntista() + "</h2><hr><br>")
+		document.write("Nome do correntista: " + user_conta_poupanca.get_nome_correntista() + ".<br>");
+		document.write("Nome do Banco: " + user_conta_poupanca.get_banco() + ".<br>");
+		document.write("Numero da Conta: " + user_conta_poupanca.get_numero_conta() + ".<br>");
+		document.write("Saldo conta poupança: " + user_conta_poupanca.get_saldo() + ".<br>");
+		document.write("Juros aplicado conta poupança: " + user_conta_poupanca.get_juros_poupanca() + ".<br>");
+		document.write("Data de vencimento poupança: " + user_conta_poupanca.get_data_vencimento_poupanca() + ".<br>");
+
+	</script>
+
+</body>
+</html>
